@@ -1,9 +1,9 @@
-import { FormValues } from './types/FormValues'
+import { AuthInfo } from './types/AuthInfo'
 
-export const loginFunction = (data: FormValues) => {
+export const loginFunction = (email: AuthInfo['email']) => {
     const authId = crypto.randomUUID()
 
-    localStorage.setItem('auth', JSON.stringify(data))
+    localStorage.setItem('auth', JSON.stringify({ email: email }))
 
     location.replace(`/dashboard/${authId}/`)
 }
@@ -15,7 +15,7 @@ export const checkIsAuthenticated = () => {
         return { authInfo: undefined, isAuthenticated: false }
     }
 
-    const authObj = JSON.parse(auth)
+    const authObj: AuthInfo = JSON.parse(auth)
 
     return { authInfo: authObj, isAuthenticated: true }
 }
