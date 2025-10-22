@@ -21,7 +21,7 @@ const LoginForm = () => {
         formState: { errors },
     } = useForm<FormData>()
 
-    const onSubmit = (data: FormData) => loginFunction(data)
+    const onSubmit = (data: FormData) => loginFunction(data.email)
 
     return (
         <Box
