@@ -1,2 +1,9 @@
-// Anything exported from this file is importable by other in-browser modules.
-export function publicApiFunction() {}
+import { FormValues } from './types/FormValues'
+
+export const loginFunction = (data: FormValues) => {
+    const authId = crypto.randomUUID()
+
+    localStorage.setItem('auth', JSON.stringify(data))
+
+    location.replace(`/dashboard/${authId}/`)
+}
