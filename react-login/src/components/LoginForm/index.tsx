@@ -7,6 +7,7 @@ import {
     Link,
     TextField,
 } from '@mui/material'
+import { loginFunction } from '../../../../utils/src/homehub-utils'
 
 type FormData = {
     email: string
@@ -20,13 +21,7 @@ const LoginForm = () => {
         formState: { errors },
     } = useForm<FormData>()
 
-    const onSubmit = (data: FormData) => {
-        const authId = crypto.randomUUID()
-
-        localStorage.setItem('auth', JSON.stringify(data))
-
-        location.replace(`/dashboard/${authId}/`)
-    }
+    const onSubmit = (data: FormData) => loginFunction(data)
 
     return (
         <Box
