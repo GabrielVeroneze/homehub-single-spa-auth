@@ -1,6 +1,6 @@
 export interface AuthInfo {
     email: string
-    authId: number
+    authId: string
     firstName?: string
     lastName?: string
 }
