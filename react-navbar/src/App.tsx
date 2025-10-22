@@ -16,7 +16,7 @@ import {
     MenuItem,
     Toolbar,
 } from '@mui/material'
-import { AuthInfo } from './types/AuthInfo'
+import { AuthInfo } from '../../utils/src/types/AuthInfo'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import SettingsIcon from '@mui/icons-material/Settings'
