@@ -16,6 +16,7 @@ import {
     MenuItem,
     Toolbar,
 } from '@mui/material'
+import { checkIsAuthenticated } from '../../utils/src/homehub-utils'
 import { AuthInfo } from '../../utils/src/types/AuthInfo'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import NotificationsIcon from '@mui/icons-material/Notifications'
@@ -32,14 +33,14 @@ const App = () => {
     const [authInfo, setAuthInfo] = useState<AuthInfo>()
 
     useEffect(() => {
-        const auth = localStorage.getItem('auth')
+        const { authInfo: authObj, isAuthenticated } = checkIsAuthenticated()
 
-        if (!auth) {
+        if (!isAuthenticated) {
             location.replace('/')
             return
         }
 
-        setAuthInfo(JSON.parse(auth))
+        setAuthInfo(authObj)
     }, [])
 
     const isMenuOpen = Boolean(anchorEl)
