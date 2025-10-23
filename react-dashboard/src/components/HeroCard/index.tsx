@@ -1,9 +1,12 @@
 import { Box, Typography } from '@mui/material'
+import { checkIsAuthenticated } from '../../../../utils/src/homehub-utils'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import VisaoGeral from '../../assets/visao-geral.png'
 
 const HeroCard = () => {
+    const { authInfo } = checkIsAuthenticated()
+
     return (
         <Card sx={{ backgroundColor: '#FFF3E0' }}>
             <CardContent>
@@ -19,7 +22,11 @@ const HeroCard = () => {
                             color="#000000DE"
                             fontSize="34px"
                         >
-                            Olá, usuário!
+                            Olá,{' '}
+                            {!!authInfo?.firstName
+                                ? `${authInfo?.firstName} ${authInfo?.lastName}`
+                                : authInfo?.email}
+                            !
                         </Typography>
                         <Typography color="#000000DE" fontSize="24px">
                             Confira as informações da sua casa inteligente!
