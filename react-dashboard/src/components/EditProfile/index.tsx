@@ -1,17 +1,30 @@
 import { useForm } from 'react-hook-form'
 import { Box, Button, TextField } from '@mui/material'
+import {
+    checkIsAuthenticated,
+    editAuthInfo,
+} from '../../../../utils/src/homehub-utils'
 import { AuthInfo } from '../../../../utils/src/types/AuthInfo'
 
 type FormData = Omit<AuthInfo, 'authId'>
 
 const EditProfile = () => {
+    const { authInfo } = checkIsAuthenticated()
+
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<FormData>()
+    } = useForm<FormData>({
+        defaultValues: authInfo,
+    })
 
-    const onSubmit = (data: FormData) => console.log(data)
+    const onSubmit = (data: FormData) => {
+        editAuthInfo({
+            ...data,
+            authId: authInfo.authId,
+        })
+    }
 
     return (
         <Box
