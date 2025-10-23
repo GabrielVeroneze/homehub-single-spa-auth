@@ -32,3 +32,19 @@ export const checkIsAuthenticated = () => {
 
     return { authInfo: authObj, isAuthenticated: true }
 }
+
+export const editAuthInfo = (data: AuthInfo) => {
+    const auth: AuthInfo = JSON.parse(localStorage.getItem('auth'))
+
+    if (!location.pathname.includes(auth.authId)) {
+        alert('Você não tem permissão para editar este usuário')
+
+        return logoutFunction()
+    }
+
+    localStorage.setItem('auth', JSON.stringify(data))
+
+    alert('Usuário editado com sucesso')
+
+    return
+}
