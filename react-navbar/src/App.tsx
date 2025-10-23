@@ -15,6 +15,7 @@ import {
     Menu,
     MenuItem,
     Toolbar,
+    Typography,
 } from '@mui/material'
 import {
     checkIsAuthenticated,
@@ -125,7 +126,19 @@ const App = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>{authInfo?.email}</MenuItem>
+            <MenuItem
+                onClick={handleMenuClose}
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                }}
+            >
+                <Typography>{`${authInfo?.firstName} ${authInfo?.lastName}`}</Typography>
+                <Typography variant="body2" sx={{ color: '#00000099' }}>
+                    {authInfo?.email}
+                </Typography>
+            </MenuItem>
             <Divider />
             <MenuItem onClick={handleMenuClose}>
                 <ListItemIcon>
