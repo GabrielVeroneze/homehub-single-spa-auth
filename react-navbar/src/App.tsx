@@ -16,7 +16,10 @@ import {
     MenuItem,
     Toolbar,
 } from '@mui/material'
-import { checkIsAuthenticated, logoutFunction } from '../../utils/src/homehub-utils'
+import {
+    checkIsAuthenticated,
+    logoutFunction,
+} from '../../utils/src/homehub-utils'
 import { AuthInfo } from '../../utils/src/types/AuthInfo'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import NotificationsIcon from '@mui/icons-material/Notifications'
@@ -66,7 +69,12 @@ const App = () => {
             onClick={toggleDrawer(false)}
         >
             <List>
-                <ListItem disablePadding>
+                <ListItem
+                    disablePadding
+                    onClick={() =>
+                        location.replace(`/dashboard/${authInfo.authId}/`)
+                    }
+                >
                     <ListItemButton>
                         <ListItemIcon>
                             <SpaceDashboardIcon />
@@ -125,7 +133,13 @@ const App = () => {
                 </ListItemIcon>
                 <ListItemText>Configurações</ListItemText>
             </MenuItem>
-            <MenuItem onClick={handleMenuClose}>
+            <MenuItem
+                onClick={() =>
+                    location.replace(
+                        `/dashboard/${authInfo.authId}/edit-profile`
+                    )
+                }
+            >
                 <ListItemIcon>
                     <PersonIcon />
                 </ListItemIcon>
