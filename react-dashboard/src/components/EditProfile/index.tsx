@@ -1,10 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { Box, Button, TextField } from '@mui/material'
+import { AuthInfo } from '../../../../utils/src/types/AuthInfo'
 
-type FormData = {
-    email: string
-    password: string
-}
+type FormData = Omit<AuthInfo, 'authId'>
 
 const EditProfile = () => {
     const {
@@ -45,17 +43,17 @@ const EditProfile = () => {
                 id="firstName"
                 label="Nome"
                 variant="standard"
-                error={!!errors.password}
-                helperText={errors.password?.message}
-                {...register('password')}
+                error={!!errors.firstName}
+                helperText={errors.firstName?.message}
+                {...register('firstName')}
             />
             <TextField
                 id="lastName"
                 label="Sobrenome"
                 variant="standard"
-                error={!!errors.password}
-                helperText={errors.password?.message}
-                {...register('password')}
+                error={!!errors.lastName}
+                helperText={errors.lastName?.message}
+                {...register('lastName')}
             />
             <Button
                 variant="contained"
